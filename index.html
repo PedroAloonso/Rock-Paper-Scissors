@@ -5,9 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+    </header>
+
+    <main>
+        <div class="external-container">
+            <div class="scoreboard">
+                <div class="item">
+                    <img src="./images/interrogation.png" alt="You" id="playerImg">
+                    <p id="player_score">You: 0</p>
+                </div>
+                <div class="item">
+                    <img src="./images/interrogation.png" alt="Cat" id="catImg">
+                    <p id="cat_score">Cat: 0</p>
+                    
+                </div>
+            </div>
+
+            <div class="game">
+                <div class="title">
+                    <h1>Choose your weapon</h1>
+                    <h2>Fist do score 5 points wins the game</h2>
+                </div>
+                <div class="weapons">
+                    <img src="./images/rock.png" alt="Rock" id="rock">
+                    <img src="./images/paper.png" alt="Paper" id="paper">
+                    <img src="./images/scissor.png" alt="Scissor" id="scissor">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Site Code <a href="https://github.com/PedroRub1/landing-page" target="_blank"><img src="./images/github-icon.png" alt="github icon"></a></p>
+    </footer>
     
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

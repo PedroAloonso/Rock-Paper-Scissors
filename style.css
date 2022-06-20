@@ -1,0 +1,96 @@
+:root{
+    /* Background colors*/
+    --color1: #F2790F;
+    --color2: #F28E13;
+    --color3: #F2A516;
+
+    /*fonts colors*/
+    --color_font1: #f9faf8;
+    --color_font2: #F2CE1B;
+    --color_font3: #267365;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: var(--color1);
+    text-align: center;
+    height: fit-content;
+}
+
+header h1 {
+    font-size: 64px;
+    padding: 60px;
+
+    color: var(--color_font1);
+}
+
+.external-container {
+    display: flex;
+    background-color: var(--color2);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 30%;
+}
+
+.scoreboard img{
+    height: 200px;
+    width: 200px;
+
+}
+
+.scoreboard .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.item p {
+    padding-top: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.game {
+    color: white;
+    text-align: center;
+    
+}
+
+.title {
+    padding-bottom: 30px;
+}
+
+.weapons img{
+    padding: 30px;
+    width: 150px;
+    transition: 1s;
+}
+
+.weapons img:hover {
+    width: 200px;
+    padding: 0px;
+}
+
+
+footer {
+    background-color: var(--color1);
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}

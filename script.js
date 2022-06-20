@@ -1,3 +1,6 @@
+var machineScore = 0
+var playerScore = 0
+
 function computerPlay () {
     let choice = Math.floor(Math.random() * 3)
     if (choice == 0){
@@ -14,56 +17,85 @@ function capitalize(str) {
     return str1
 }
 
-function playRound (playerSelection, computerSelection = computerPlay()) {
-    let caseInsensitive = capitalize(playerSelection)
-    if (caseInsensitive == 'Rock' && computerSelection == 'Rock') {
-        draw++
-        return 'DRAW!!'
-    } else if (caseInsensitive == 'Paper' && computerSelection == 'Paper') {
-        draw++
-        return 'DRAW!!'
-    } else if (caseInsensitive == 'Scissors' && computerSelection == 'Scissors') {
-        draw++
-        return 'DRAW!!'
-    } else if (caseInsensitive == 'Rock' && computerSelection == 'Paper') {
-        machineScore++
-        return 'Computer WIN!'
-    } else if (caseInsensitive == 'Rock' && computerSelection == 'Scissors') {
-        playerScore++
-        return 'Player WIN!'
-    } else if (caseInsensitive == 'Paper' && computerSelection == 'Rock') {
-        playerScore++
-        return 'Player WIN!'
-    } else if (caseInsensitive == 'Paper' && computerSelection == 'Scissors'){
-        machineScore++
-        return 'Computer WIN!'
-    } else if (caseInsensitive == 'Scissors' && computerSelection == 'Rock') {
-        machineScore++
-        return 'Computer WIN!'
-    } else if (caseInsensitive == 'Scissors' && computerSelection == 'Paper') {
-        playerScore++
-        return 'Player WIN!'
+function changeCatPicture(picture) {
+    if(picture == "Rock") {
+        catPicture.setAttribute('src', './images/rock.png')
+    } else if (picture == 'Paper') {
+        catPicture.setAttribute('src', './images/paper.png')
+    } else if (picture == 'Scissors') {
+        catPicture.setAttribute('src', './images/scissor.png')
     } else {
-        return 'Incorrect Value'
+        catPicture.setAttribute('src', './images/interrogation.png')
     }
 }
 
-let a = 'Rock'
-function game() {
-    for (let i = 0; i < 5; i++){
-        console.log(playRound(a))
-        console.log(`\n\nPlayer Score: ${playerScore}`)
-        console.log(`Machine Score: ${machineScore}`)
-    }
-    
-    // Make function scores for UI Interface preparation 
 
-    if(playerScore > machineScore){
-        console.log('')
+function playRound (playerSelection, computerSelection = computerPlay()) {
+    let playerCapitalizeSelection = capitalize(playerSelection)
+
+    if (playerCapitalizeSelection == 'Rock' && computerSelection == 'Rock' || 
+    playerCapitalizeSelection == 'Paper' && computerSelection == 'Paper' ||
+    playerCapitalizeSelection == 'Scissors' && computerSelection == 'Scissors') {
+        tittleh1.innerHTML = 'Its a TIE'
+
+    } else if (playerCapitalizeSelection == 'Rock' && computerSelection == 'Paper' ||
+    playerCapitalizeSelection == 'Paper' && computerSelection == 'Scissors' ||
+    playerCapitalizeSelection == 'Scissors' && computerSelection == 'Rock') {
+        tittleh1.innerHTML = 'Computer WIN!'
+        machineScore++
+        cScore.innerHTML = `Cat: ${machineScore}` 
+
+    } else if (playerCapitalizeSelection == 'Rock' && computerSelection == 'Scissors' ||
+    playerCapitalizeSelection == 'Paper' && computerSelection == 'Rock' ||
+    playerCapitalizeSelection == 'Scissors' && computerSelection == 'Paper') {
+        tittleh1.innerHTML = 'Player WIN!'
+        playerScore++
+        pScore.innerHTML = `You: ${playerScore}`
+        
+    } else {
+        return window.alert('Incorrect Value')
     }
 
+    changeCatPicture(computerSelection)
+
+    if(playerScore >= 5 || machineScore >= 5){
+        tittleh1.innerHTML = 'Player WIN!'
+        window.alert('teste')
+        playerScore = 0
+        machineScore = 0
+        pScore.innerHTML = `You: ${playerScore}`
+        cScore.innerHTML = `Cat: ${machineScore}`
+    } else {
+        tittleh1.innerHTML = 'Cat WIN!'
+    }
 }
 
-let playerScore = 0
-let machineScore = 0
-let draw = 0
+function game() {    
+    rock.addEventListener('click',function(){
+        playRound('rock')
+        playerPicture.setAttribute('src', './images/rock.png')
+    })
+    paper.addEventListener('click',function(){
+        playRound('paper')
+        playerPicture.setAttribute('src', './images/paper.png')
+    })
+    scissor.addEventListener('click',function(){
+        playRound('scissors')
+        playerPicture.setAttribute('src', './images/scissor.png')
+    })
+}
+
+var tittleh1 = document.querySelector('.title h1')
+var tittleh2 = document.querySelector('title h2')
+
+var playerPicture = document.querySelector('#playerImg')
+var catPicture = document.querySelector('#catImg')
+
+var rock = document.querySelector('#rock')
+var paper = document.querySelector('#paper')
+var scissor = document.querySelector('#scissor')
+
+var pScore = document.querySelector('#player_score')
+var cScore = document.querySelector('#cat_score')
+
+game()
