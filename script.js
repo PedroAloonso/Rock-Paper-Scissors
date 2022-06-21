@@ -1,6 +1,3 @@
-var machineScore = 0
-var playerScore = 0
-
 function computerPlay () {
     let choice = Math.floor(Math.random() * 3)
     if (choice == 0){
@@ -17,18 +14,17 @@ function capitalize(str) {
     return str1
 }
 
-function changeCatPicture(picture) {
+function changeComputerPicture(picture) {
     if(picture == "Rock") {
-        catPicture.setAttribute('src', './images/rock.png')
+        computerPicture.setAttribute('src', './images/rock.png')
     } else if (picture == 'Paper') {
-        catPicture.setAttribute('src', './images/paper.png')
+        computerPicture.setAttribute('src', './images/paper.png')
     } else if (picture == 'Scissors') {
-        catPicture.setAttribute('src', './images/scissor.png')
+        computerPicture.setAttribute('src', './images/scissor.png')
     } else {
-        catPicture.setAttribute('src', './images/interrogation.png')
+        computerPicture.setAttribute('src', './images/interrogation.png')
     }
 }
-
 
 function playRound (playerSelection, computerSelection = computerPlay()) {
     let playerCapitalizeSelection = capitalize(playerSelection)
@@ -56,17 +52,22 @@ function playRound (playerSelection, computerSelection = computerPlay()) {
         return window.alert('Incorrect Value')
     }
 
-    changeCatPicture(computerSelection)
+    changeComputerPicture(computerSelection)
 
-    if(playerScore >= 5 || machineScore >= 5){
+    if(playerScore >= 5 ){
         tittleh1.innerHTML = 'Player WIN!'
-        window.alert('teste')
+        window.alert('You WIN')
         playerScore = 0
         machineScore = 0
         pScore.innerHTML = `You: ${playerScore}`
         cScore.innerHTML = `Cat: ${machineScore}`
-    } else {
-        tittleh1.innerHTML = 'Cat WIN!'
+    } else if(machineScore >= 5){
+        tittleh1.innerHTML = 'Computer WIN!'
+        window.alert('You lost')
+        playerScore = 0
+        machineScore = 0
+        pScore.innerHTML = `You: ${playerScore}`
+        cScore.innerHTML = `Cat: ${machineScore}`
     }
 }
 
@@ -85,11 +86,14 @@ function game() {
     })
 }
 
+var machineScore = 0
+var playerScore = 0
+
 var tittleh1 = document.querySelector('.title h1')
 var tittleh2 = document.querySelector('title h2')
 
 var playerPicture = document.querySelector('#playerImg')
-var catPicture = document.querySelector('#catImg')
+var computerPicture = document.querySelector('#catImg')
 
 var rock = document.querySelector('#rock')
 var paper = document.querySelector('#paper')
