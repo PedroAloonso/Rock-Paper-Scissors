@@ -63,7 +63,7 @@ function playRound (playerSelection, computerSelection = computerPlay()) {
         cScore.innerHTML = `Cat: ${machineScore}`
     } else if(machineScore >= 5){
         tittleh1.innerHTML = 'Computer WIN!'
-        window.alert('You ost')
+        window.alert('You lost')
         playerScore = 0
         machineScore = 0
         pScore.innerHTML = `You: ${playerScore}`
