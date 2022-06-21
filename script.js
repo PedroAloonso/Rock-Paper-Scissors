@@ -90,7 +90,6 @@ var machineScore = 0
 var playerScore = 0
 
 var tittleh1 = document.querySelector('.title h1')
-var tittleh2 = document.querySelector('title h2')
 
 var playerPicture = document.querySelector('#playerImg')
 var computerPicture = document.querySelector('#catImg')
