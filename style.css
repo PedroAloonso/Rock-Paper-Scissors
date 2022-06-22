@@ -16,7 +16,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+body *{
     overflow-x: hidden;
     white-space: wrap;
     word-break: break-word;
@@ -108,4 +108,5 @@ footer {
 
 footer img {
     width: 18px;
+    padding-left: 5px;
 }
